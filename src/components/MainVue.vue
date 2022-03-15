@@ -1,15 +1,15 @@
 <template>
   <main>
     <div class="card">
-
       <div class="card-thumb"></div>
 
       <div class="card-description">
-        <h4 id="title"> Titolo: <span>Pierino</span></h4>
-        <h4 id="title-original"> Titolo originale: <span>Pierino al mare</span></h4>
+        <h4 id="title">Titolo: <span>Pierino</span></h4>
+        <h4 id="title-original">
+          Titolo originale: <span>Pierino al mare</span>
+        </h4>
         <p id="langage">Italo-americano</p>
         <p id="vote">Voto: 44/10</p>
-
       </div>
     </div>
   </main>
@@ -19,8 +19,6 @@
 export default {
   name: "MainVue",
 };
-
-
 </script>
 
 <style lang="scss" scoped>
@@ -39,32 +37,32 @@ main {
   .card {
     width: calc(100% / 6);
     aspect-ratio: 1/2;
- 
+
     display: flex;
     flex-direction: column;
     padding: 5px;
     gap: 10px;
 
-    .card-thumb{
-        flex-grow: 1;
-        border: 1px solid white;
+    .card-thumb {
+      flex-grow: 1;
+      border: 1px solid white;
     }
 
-    .card-description{
+    .card-description {
+      color: white;
+
+      & span {
         color: white;
+        font-weight: 100;
+      }
 
-        & span{
-            color: white;
-            font-weight: 100;
-        }
+      & h4 {
+        font-weight: 900;
+      }
 
-        & h4{
-            font-weight: 900;
-        }
-
-        & p{
-            font-size: 14px;
-        }
+      & p {
+        font-size: 14px;
+      }
     }
   }
 }

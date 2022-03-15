@@ -9,35 +9,37 @@
 </template>
 
 <script>
-
-import axios from 'axios'
+import axios from "axios";
 
 export default {
   name: "SearchNav",
 
   data() {
     return {
-      baseURL : 'https://api.themoviedb.org/3',
-      search: '',
-    }
+      baseURL: "https://api.themoviedb.org/3",
+      search: "",
+    };
   },
 
   methods: {
-    searchItems :function () {
-      axios.get(`${this.baseURL}/search/movie`,{
-        params:{
-          api_key: "faa3d25c66c254fa24c269f4b5cf46ff",
-          query: this.search,
-          language: "it-IT",
-        }
-      })
-      .then( res=> {
-        console.log(res.data.results)
-      })
-      .catch(error =>{
-        console.log(error.response)
-      })
-    }
+    searchItems: function () {
+      axios
+        .get(`${this.baseURL}/search/movie`, {
+          params: {
+            api_key: "faa3d25c66c254fa24c269f4b5cf46ff",
+            query: this.search,
+            language: "it-IT",
+          },
+        })
+        .then((res) => {
+          console.log(res.data.results);
+        })
+        .catch((error) => {
+          console.log(error.response);
+        });
+
+        // mo' dovresti pushare nell'array dei film, che poi dovrai stampare sul Main Vue, ricordati anche di RESETTARE la search bar prima di ritrovarti 98759438759387 film nell'array.
+    },
   },
 };
 </script>
