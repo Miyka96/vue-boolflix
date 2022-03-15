@@ -19,6 +19,8 @@
 export default {
   name: "MainVue",
 };
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -50,6 +52,19 @@ main {
 
     .card-description{
         color: white;
+
+        & span{
+            color: white;
+            font-weight: 100;
+        }
+
+        & h4{
+            font-weight: 900;
+        }
+
+        & p{
+            font-size: 14px;
+        }
     }
   }
 }
