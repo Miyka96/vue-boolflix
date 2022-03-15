@@ -2,7 +2,12 @@
   <nav>
     <h1>Boolflix</h1>
     <div id="search">
-      <input type="search" id="search-bar" v-model="search" />
+      <input
+        type="search"
+        id="search-bar"
+        v-model="search"
+        @keyup.enter="searchItems"
+      />
       <button id="search-btn" @click="searchItems">Search</button>
     </div>
   </nav>
@@ -18,6 +23,7 @@ export default {
     return {
       baseURL: "https://api.themoviedb.org/3",
       search: "",
+      filmArray: [],
     };
   },
 
@@ -33,12 +39,16 @@ export default {
         })
         .then((res) => {
           console.log(res.data.results);
+          this.filmArray = res.data.results;
+          this.$emit('film',this.filmArray);
         })
         .catch((error) => {
           console.log(error.response);
-        });
+        })
 
-        // mo' dovresti pushare nell'array dei film, che poi dovrai stampare sul Main Vue, ricordati anche di RESETTARE la search bar prima di ritrovarti 98759438759387 film nell'array.
+      this.search = "";
+
+      // mo' dovresti pushare nell'array dei film, che poi dovrai stampare sul Main Vue, ricordati anche di RESETTARE la search bar prima di ritrovarti 98759438759387 film nell'array.
     },
   },
 };

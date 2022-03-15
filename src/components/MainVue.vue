@@ -1,15 +1,15 @@
 <template>
   <main>
-    <div class="card">
+    <div class="card"  v-for="el in arrayFilm" :key="el.id">
       <div class="card-thumb"></div>
 
       <div class="card-description">
-        <h4 id="title">Titolo: <span>Pierino</span></h4>
+        <h4 id="title">Titolo: <span>{{ el.title}}</span></h4>
         <h4 id="title-original">
-          Titolo originale: <span>Pierino al mare</span>
+          Titolo originale: <span>{{el.original_title}}</span>
         </h4>
-        <p id="langage">Italo-americano</p>
-        <p id="vote">Voto: 44/10</p>
+        <p id="langage">{{el.original_language}}</p>
+        <p id="vote">{{el.vote_average}}/10</p>
       </div>
     </div>
   </main>
@@ -18,6 +18,12 @@
 <script>
 export default {
   name: "MainVue",
+  props: {
+    arrayFilm:{
+      type: Object,
+      required: true,
+    }
+  }
 };
 </script>
 

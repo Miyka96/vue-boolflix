@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <SearchNav />
-    <Main-vue />
+    <SearchNav @film="filmFunction" />
+    <Main-vue :arrayFilm="temporaryArray" />
   </div>
 </template>
 
@@ -15,6 +15,19 @@ export default {
     MainVue,
     SearchNav,
   },
+
+  data() {
+    return {
+      temporaryArray: "",
+    };
+  },
+
+  methods: {
+    filmFunction: function(filmArray){
+      this.temporaryArray = filmArray;
+    }
+  }
+
 };
 </script>
 
