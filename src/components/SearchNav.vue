@@ -2,15 +2,43 @@
   <nav>
     <h1>Boolflix</h1>
     <div id="search">
-      <input type="search" id="search-bar" />
-      <button id="search-btn">Search</button>
+      <input type="search" id="search-bar" v-model="search" />
+      <button id="search-btn" @click="searchItems">Search</button>
     </div>
   </nav>
 </template>
 
 <script>
+
+import axios from 'axios'
+
 export default {
   name: "SearchNav",
+
+  data() {
+    return {
+      baseURL : 'https://api.themoviedb.org/3',
+      search: '',
+    }
+  },
+
+  methods: {
+    searchItems :function () {
+      axios.get(`${this.baseURL}/search/movie`,{
+        params:{
+          api_key: "faa3d25c66c254fa24c269f4b5cf46ff",
+          query: this.search,
+          language: "it-IT",
+        }
+      })
+      .then( res=> {
+        console.log(res.data.results)
+      })
+      .catch(error =>{
+        console.log(error.response)
+      })
+    }
+  },
 };
 </script>
 
@@ -39,7 +67,8 @@ nav {
       border: 1px solid black;
       background-color: grey;
 
-      &:hover, &:focus{
+      &:hover,
+      &:focus {
         filter: brightness(1.5);
       }
     }

@@ -31,7 +31,7 @@ main {
   overflow-y: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   padding: 40px;
   gap: 20px;
