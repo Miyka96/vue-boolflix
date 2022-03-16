@@ -45,10 +45,12 @@
 
         <p v-else id="langage">Language: {{ el.original_language }}</p>
 
-        <p v-for="(elemento, i) in 5" :key="i">
-          <span id="starf" v-if="i < stars(el)"> &starf; </span>
-          <span id="star" v-else> &star; </span>
-        </p>
+        <div class="star-wrapper">
+          <p v-for="(element, i) in 5" :key="i">
+            <span id="starf" v-if="i < stars(el)"> &starf; </span>
+            <span id="star" v-else> &star; </span>
+          </p>
+        </div>
       </div>
     </div>
 
@@ -98,10 +100,12 @@
 
         <p v-else id="langage">Language: {{ el.original_language }}</p>
 
-        <p v-for="(element, i) in 5" :key="i">
-          <span id="starf" v-if="i < stars(el)"> &starf; </span>
-          <span id="star" v-else> &star; </span>
-        </p>
+        <div class="star-wrapper">
+          <p v-for="(element, i) in 5" :key="i">
+            <span id="starf" v-if="i < stars(el)"> &starf; </span>
+            <span id="star" v-else> &star; </span>
+          </p>
+        </div>
       </div>
     </div>
   </main>
@@ -148,14 +152,16 @@ main {
     flex-direction: column;
     padding: 5px;
     gap: 10px;
+    margin-bottom: 40px;
 
     .card-thumb {
       width: 250px;
-      height: 100%;
+      height: 350px;
       border: 1px solid white;
 
       & img {
         width: 100%;
+        height: 100%;
         object-fit: cover;
       }
     }
@@ -181,6 +187,11 @@ main {
       }
     }
   }
+}
+
+.star-wrapper{
+  display: flex;
+  padding-bottom: 20px;
 }
 
 #star {
