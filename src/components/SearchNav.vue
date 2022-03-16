@@ -24,6 +24,7 @@ export default {
       baseURL: "https://api.themoviedb.org/3",
       search: "",
       filmArray: [],
+      tvArray: [],
     };
   },
 
@@ -40,15 +41,32 @@ export default {
         .then((res) => {
           console.log(res.data.results);
           this.filmArray = res.data.results;
-          this.$emit('film',this.filmArray);
+          this.$emit("film", this.filmArray);
+          this.filmArray = [];
         })
         .catch((error) => {
           console.log(error.response);
+        });
+
+      // chiamata per le serie tv
+
+      axios
+        .get(`${this.baseURL}/search/tv`, {
+          params: {
+            api_key: "faa3d25c66c254fa24c269f4b5cf46ff",
+            language: "it-IT",
+            query: this.search,
+          },
         })
-
-      this.search = "";
-
-      // mo' dovresti pushare nell'array dei film, che poi dovrai stampare sul Main Vue, ricordati anche di RESETTARE la search bar prima di ritrovarti 98759438759387 film nell'array.
+        .then((res) => {
+          console.log(res.data.results);
+          this.tvArray = res.data.results;
+          this.$emit("tv", this.tvArray);
+          this.tvArray = [];
+        })
+        .catch((error) => {
+          console.log(error.response);
+        });
     },
   },
 };
