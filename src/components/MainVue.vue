@@ -2,7 +2,10 @@
   <main>
     <!-- FILM -->
     <div class="card" v-for="el in arrayFilm" :key="el.id">
-      <img :src="`https://image.tmdb.org/t/p/w300${el.poster_path}`" />
+      <img
+        :class="el.poster_path == null ? 'null' : ''"
+        :src="`https://image.tmdb.org/t/p/w300${el.poster_path}`"
+      />
 
       <div class="card-description">
         <h4 id="title">
@@ -49,13 +52,20 @@
             <span id="star" v-else> &star; </span>
           </p>
         </div>
+        <br />
+        <div class="overview">
+          <p>{{ el.overview }}</p>
+        </div>
       </div>
     </div>
 
     <!-- SERIE TV -->
 
     <div class="card" v-for="el in tvArray" :key="el.id">
-      <img :src="`https://image.tmdb.org/t/p/w300${el.poster_path}`" />
+      <img
+        :class="el.poster_path == null ? 'null' : ''"
+        :src="`https://image.tmdb.org/t/p/w300${el.poster_path}`"
+      />
 
       <div class="card-description">
         <h4 id="title">
@@ -102,6 +112,10 @@
             <span id="star" v-else> &star; </span>
           </p>
         </div>
+        <br />
+        <div class="overview">
+          <p>{{ el.overview }}</p>
+        </div>
       </div>
     </div>
   </main>
@@ -146,15 +160,14 @@ main {
     gap: 10px;
     margin-bottom: 40px;
     position: relative;
-    transition: all .5s ease-in;
+    transition: all 0.5s ease-in;
 
-
-      & img {
+    & img {
       display: block;
       width: 100%;
       height: auto;
-      }
-    
+      object-fit: cover;
+    }
 
     .card-description {
       position: absolute;
@@ -208,12 +221,22 @@ main {
   color: rgb(255, 255, 59);
 }
 
-.card:hover .card-description{
+.card:hover .card-description {
   opacity: 0.8;
 }
 
-#flag{
+#flag {
   width: 30px;
   height: 15px;
+}
+
+.overview {
+  overflow-y: auto;
+}
+
+.null::before{
+  content: "Anteprima immagine non disponibile";
+  color: rgba(255, 255, 255, 0.281);
+  font-weight: bolder;
 }
 </style>

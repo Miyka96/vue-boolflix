@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <h1>Boolflix</h1>
+    <img id="logo" src="..\src\assets\img\Boolflix.svg" alt="">
     <div id="search">
       <input
         type="search"
@@ -79,14 +79,13 @@ nav {
   background-color: rgb(41, 41, 41);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
+  padding-bottom: 10px;
 
-  h1 {
-    color: red;
-    font-size: 40px;
-    padding: 10px 40px;
-    font-weight: 800;
+  #logo{
+    height: 60px;
+    padding: 10px 25px;
   }
 
   #search {
@@ -100,6 +99,7 @@ nav {
       height: 25px;
       border: 1px solid black;
       background-color: grey;
+      border-radius: 5000px;
 
       &:hover,
       &:focus {
@@ -114,6 +114,7 @@ nav {
       padding: 0 10px;
       margin: 0 5px;
       cursor: pointer;
+      border-radius: 5000px;
 
       &:hover {
         filter: brightness(1.5);
