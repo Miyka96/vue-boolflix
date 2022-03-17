@@ -75,11 +75,12 @@ export default {
 <style lang="scss" scoped>
 nav {
   width: 100%;
-  height: 70px;
+  height: fit-content;
   background-color: rgb(41, 41, 41);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
 
   h1 {
     color: red;
@@ -89,7 +90,10 @@ nav {
   }
 
   #search {
-    padding: 10px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 
     #search-bar {
       min-width: 150px;

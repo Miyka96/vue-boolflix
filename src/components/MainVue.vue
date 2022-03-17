@@ -2,9 +2,7 @@
   <main>
     <!-- FILM -->
     <div class="card" v-for="el in arrayFilm" :key="el.id">
-      <div class="card-thumb">
-        <img :src="`https://image.tmdb.org/t/p/w300${el.poster_path}`" />
-      </div>
+      <img :src="`https://image.tmdb.org/t/p/w300${el.poster_path}`" />
 
       <div class="card-description">
         <h4 id="title">
@@ -57,9 +55,7 @@
     <!-- SERIE TV -->
 
     <div class="card" v-for="el in tvArray" :key="el.id">
-      <div class="card-thumb">
-        <img :src="`https://image.tmdb.org/t/p/w300${el.poster_path}`" />
-      </div>
+      <img :src="`https://image.tmdb.org/t/p/w300${el.poster_path}`" />
 
       <div class="card-description">
         <h4 id="title">
@@ -146,28 +142,38 @@ main {
   gap: 20px;
 
   .card {
-    width: calc(100% / 5);
-    height: 450px;
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
+    width: 250px;
     gap: 10px;
     margin-bottom: 40px;
+    position: relative;
+    transition: all .5s ease-in;
 
-    .card-thumb {
-      width: 250px;
-      height: 350px;
-      border: 1px solid white;
 
       & img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      display: block;
+      width: 100%;
+      height: auto;
       }
-    }
+    
 
     .card-description {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      visibility: visible;
+      transition: 0.5s ease;
+      background-color: black;
       color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 10px;
+      padding-right: 10px;
 
       & span {
         color: white;
@@ -189,7 +195,7 @@ main {
   }
 }
 
-.star-wrapper{
+.star-wrapper {
   display: flex;
   padding-bottom: 20px;
 }
@@ -200,5 +206,14 @@ main {
 
 #starf {
   color: rgb(255, 255, 59);
+}
+
+.card:hover .card-description{
+  opacity: 0.8;
+}
+
+#flag{
+  width: 30px;
+  height: 15px;
 }
 </style>
